@@ -65,6 +65,7 @@ label {
 input {
   width: 100%;
   padding: 14px 16px;
+  padding-right: 45px; /* Space for the unit */
   border: 1px solid #ddd;
   border-radius: 10px;
   font-size: 16px;
@@ -77,9 +78,20 @@ input:focus {
   box-shadow: 0 0 0 2px rgba(118, 75, 162, 0.2);
 }
 
+/* Remove spinner buttons from number inputs */
+input::-webkit-inner-spin-button,
+input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield; /* Firefox */
+}
+
 .unit {
   position: absolute;
-  right: 15px;
+  right: 16px; /* Consistent spacing from right edge */
   color: #888;
   font-weight: 500;
 }

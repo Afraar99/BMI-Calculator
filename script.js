@@ -55,8 +55,34 @@ function calculateBMI() {
   }, 300);
 }
 
-// Reset form fields when page loads
+// Reset form fields when page loads and set up input validation
 window.onload = function () {
   document.getElementById("weight").value = "";
   document.getElementById("height").value = "";
+
+  // Set up event listeners for input fields
+  setupNumberInput("weight");
+  setupNumberInput("height");
 };
+
+function setupNumberInput(inputId) {
+  const input = document.getElementById(inputId);
+
+  // Validate numeric input
+  input.addEventListener("input", function () {
+    // Remove any non-numeric characters except decimal point
+    this.value = this.value.replace(/[^\d.]/g, "");
+
+    // Ensure only one decimal point
+    const decimalCount = (this.value.match(/\./g) || []).length;
+    if (decimalCount > 1) {
+      this.value = this.value.replace(/\.(?=.*\.)/g, "");
+    }
+
+    // Don't allow negative values
+    let value = parseFloat(this.value);
+    if (value < 0) {
+      this.value = "";
+    }
+  });
+}
