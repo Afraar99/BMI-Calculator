@@ -4,13 +4,57 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>BMI Calculator</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <div class="container">
-      <h1>BMI Calculator</h1>
-      <p>Click the button below to calculate your BMI:</p>
-      <button onclick="calculateBMI()">calculate BMI</button>
-      <div id="result"></div>
+      <div class="calculator-card">
+        <h1>BMI Calculator</h1>
+        <p class="subtitle">Check your Body Mass Index</p>
+
+        <form id="bmi-form">
+          <div class="input-group">
+            <label for="weight">Weight</label>
+            <div class="input-with-unit">
+              <input
+                type="number"
+                id="weight"
+                placeholder="Enter weight"
+                step="0.1"
+                required
+              />
+              <span class="unit">kg</span>
+            </div>
+          </div>
+
+          <div class="input-group">
+            <label for="height">Height</label>
+            <div class="input-with-unit">
+              <input
+                type="number"
+                id="height"
+                placeholder="Enter height"
+                step="0.1"
+                required
+              />
+              <span class="unit">cm</span>
+            </div>
+          </div>
+
+          <button type="button" onclick="calculateBMI()" class="calculate-btn">
+            Calculate BMI
+          </button>
+        </form>
+
+        <div id="result" class="result-hidden"></div>
+        <div id="bmi-category" class="category-hidden"></div>
+      </div>
     </div>
 
     <script src="script.js"></script>
