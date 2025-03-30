@@ -49,9 +49,15 @@ function calculateBMI() {
   categoryDiv.innerHTML = `Category: <strong>${category}</strong>`;
   categoryDiv.className = `category ${categoryClass}`;
 
+  // Display appropriate motivation GIF
+  let motivationGif = document.getElementById("motivation-gif");
+  motivationGif.innerHTML = `<img src="images/${categoryClass}.gif" alt="${category} motivation">`;
+  motivationGif.className = "motivation-visible";
+
   // Add smooth reveal animation
   setTimeout(() => {
     categoryDiv.style.display = "block";
+    motivationGif.style.display = "block";
   }, 300);
 }
 
@@ -63,6 +69,9 @@ window.onload = function () {
   // Set up event listeners for input fields
   setupNumberInput("weight");
   setupNumberInput("height");
+
+  // Reset motivation GIF
+  document.getElementById("motivation-gif").className = "motivation-hidden";
 };
 
 function setupNumberInput(inputId) {
