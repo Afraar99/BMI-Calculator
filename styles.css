@@ -5,13 +5,109 @@
   font-family: "Poppins", sans-serif;
 }
 
+/* Animated background */
 body {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background-size: 400% 400%;
+  animation: gradientBackground 15s ease infinite;
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Animation for the moving gradient */
+@keyframes gradientBackground {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Create animated background shapes */
+.bg-shape {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  filter: blur(15px);
+  z-index: -1;
+}
+
+.bg-shape:nth-child(1) {
+  width: 200px;
+  height: 200px;
+  top: -100px;
+  left: -80px;
+  animation: floatingShape1 20s infinite alternate;
+}
+
+.bg-shape:nth-child(2) {
+  width: 300px;
+  height: 300px;
+  bottom: -150px;
+  right: -100px;
+  animation: floatingShape2 25s infinite alternate;
+}
+
+.bg-shape:nth-child(3) {
+  width: 150px;
+  height: 150px;
+  top: 40%;
+  left: 15%;
+  animation: floatingShape3 18s infinite alternate;
+}
+
+.bg-shape:nth-child(4) {
+  width: 120px;
+  height: 120px;
+  bottom: 30%;
+  right: 20%;
+  animation: floatingShape4 22s infinite alternate;
+}
+
+/* Animation for floating shapes */
+@keyframes floatingShape1 {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(40px, 80px);
+  }
+}
+
+@keyframes floatingShape2 {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(-50px, -40px);
+  }
+}
+
+@keyframes floatingShape3 {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  100% {
+    transform: translate(20px, -30px) scale(1.2);
+  }
+}
+
+@keyframes floatingShape4 {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  100% {
+    transform: translate(-30px, 40px) scale(0.8);
+  }
 }
 
 .container {
